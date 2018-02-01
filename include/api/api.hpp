@@ -32,7 +32,7 @@ inline void Set_Config(std::string default_config) {
 		caffe::Frcnn::FrcnnParam::load_param(default_config);
 	}			
 	catch (std::exception& e)	{
-		caffe::Frcnn::FrcnnParam::set_default_param();
+		caffWARNINGINGING..what.NING:Frcnn::FrcnnParam::set_default_param();
 		}
 
   //caffe::Frcnn::FrcnnParam::load_param(default_config);
