@@ -43,46 +43,47 @@ if(USE_PREBUILT_DEPENDENCIES)
     set(DEPENDENCIES_URL ${DEPENDENCIES_URL_${MSVC_VERSION}_${_pyver}})
     set(DEPENDENCIES_SHA ${DEPENDENCIES_SHA_${MSVC_VERSION}_${_pyver}})
     set(CAFFE_DEPENDENCIES_DIR ${CAFFE_DEPENDENCIES_ROOT_DIR}/${DEPENDENCIES_NAME_${MSVC_VERSION}_${_pyver}})
+	set(CAFFE_DEPENDENCIES_DIR D:/caffe-builder/build_v140_x64)
 
-    foreach(_dir ${CAFFE_DEPENDENCIES_ROOT_DIR}
-                 ${CAFFE_DEPENDENCIES_DOWNLOAD_DIR}
-                 ${CAFFE_DEPENDENCIES_DIR})
-      # create the directory if it does not exist
-      if(NOT EXISTS ${_dir})
-        file(MAKE_DIRECTORY ${_dir})
-      endif()
-    endforeach()
-    # download and extract the file if it does not exist or if does not match the sha1
-    get_filename_component(_download_filename ${DEPENDENCIES_URL} NAME)
-    set(_download_path ${CAFFE_DEPENDENCIES_DOWNLOAD_DIR}/${_download_filename})
-    set(_download_file 1)
-    if(EXISTS ${_download_path})
-        file(SHA1 ${_download_path} _file_sha)
-        if("${_file_sha}" STREQUAL "${DEPENDENCIES_SHA}")
-            set(_download_file 0)
-        else()
-            set(_download_file 1)
-            message(STATUS "Removing file because sha1 does not match.")
-            file(REMOVE ${_download_path})
-        endif()
-    endif()
-    if(_download_file)
-        message(STATUS "Downloading prebuilt dependencies to ${_download_path}")
-        file(DOWNLOAD "${DEPENDENCIES_URL}"
-                      "${_download_path}"
-                      EXPECTED_HASH SHA1=${DEPENDENCIES_SHA}
-                      SHOW_PROGRESS
-                      )
-        if(EXISTS ${CAFFE_DEPENDENCIES_DIR}/libraries)
-            file(REMOVE_RECURSE ${CAFFE_DEPENDENCIES_DIR}/libraries)
-        endif()
-    endif()
-    if(EXISTS ${_download_path} AND NOT EXISTS ${CAFFE_DEPENDENCIES_DIR}/libraries)
-        message(STATUS "Extracting dependencies")
-        execute_process(COMMAND ${CMAKE_COMMAND} -E tar xjf ${_download_path}
-                        WORKING_DIRECTORY ${CAFFE_DEPENDENCIES_DIR}
-        )
-    endif()
+    # foreach(_dir ${CAFFE_DEPENDENCIES_ROOT_DIR}
+                 # ${CAFFE_DEPENDENCIES_DOWNLOAD_DIR}
+                 # ${CAFFE_DEPENDENCIES_DIR})
+      # # create the directory if it does not exist
+      # if(NOT EXISTS ${_dir})
+        # file(MAKE_DIRECTORY ${_dir})
+      # endif()
+    # endforeach()
+    # # download and extract the file if it does not exist or if does not match the sha1
+    # get_filename_component(_download_filename ${DEPENDENCIES_URL} NAME)
+    # set(_download_path ${CAFFE_DEPENDENCIES_DOWNLOAD_DIR}/${_download_filename})
+    # set(_download_file 1)
+    # if(EXISTS ${_download_path})
+        # file(SHA1 ${_download_path} _file_sha)
+        # if("${_file_sha}" STREQUAL "${DEPENDENCIES_SHA}")
+            # set(_download_file 0)
+        # else()
+            # set(_download_file 1)
+            # message(STATUS "Removing file because sha1 does not match.")
+            # file(REMOVE ${_download_path})
+        # endif()
+    # endif()
+    # if(_download_file)
+        # message(STATUS "Downloading prebuilt dependencies to ${_download_path}")
+        # file(DOWNLOAD "${DEPENDENCIES_URL}"
+                      # "${_download_path}"
+                      # EXPECTED_HASH SHA1=${DEPENDENCIES_SHA}
+                      # SHOW_PROGRESS
+                      # )
+        # if(EXISTS ${CAFFE_DEPENDENCIES_DIR}/libraries)
+            # file(REMOVE_RECURSE ${CAFFE_DEPENDENCIES_DIR}/libraries)
+        # endif()
+    # endif()
+    # if(EXISTS ${_download_path} AND NOT EXISTS ${CAFFE_DEPENDENCIES_DIR}/libraries)
+        # message(STATUS "Extracting dependencies")
+        # execute_process(COMMAND ${CMAKE_COMMAND} -E tar xjf ${_download_path}
+                        # WORKING_DIRECTORY ${CAFFE_DEPENDENCIES_DIR}
+        # )
+    # endif()
     if(EXISTS ${CAFFE_DEPENDENCIES_DIR}/libraries/caffe-builder-config.cmake)
         include(${CAFFE_DEPENDENCIES_DIR}/libraries/caffe-builder-config.cmake)
     else()
