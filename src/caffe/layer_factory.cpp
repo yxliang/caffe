@@ -55,7 +55,7 @@ template <typename Dtype>
 shared_ptr<Layer<Dtype> > LayerRegistry<Dtype>::CreateLayer(
     const LayerParameter& param) {
   if (Caffe::root_solver()) {
-    LOG(INFO) << "Creating layer " << param.name();
+    DLOG(INFO) << "Creating layer " << param.name();
   }
   const string& type = param.type();
   CreatorRegistry& registry = Registry();

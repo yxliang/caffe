@@ -1,6 +1,12 @@
 #include "api/FRCNN/frcnn_api.hpp"
 
 namespace FRCNN_API {
+	using std::vector;
+	using caffe::Blob;
+	using caffe::Net;
+	using caffe::Frcnn::FrcnnParam;
+	using caffe::Frcnn::Point4f;
+	using caffe::Frcnn::BBox;
 
 	void Detector::preprocess(const cv::Mat &img_in, const int blob_idx) {
 		const vector<Blob<float> *> &input_blobs = net_->input_blobs();

@@ -9,10 +9,10 @@ namespace caffe {
 		template <typename Dtype>
 		void vis_detections(cv::Mat & frame, const std::vector<BBox<Dtype> >& ans, const std::map<int, std::string> CLASS) {
 			for (size_t i = 0; i < ans.size(); i++) {
-				cv::rectangle(frame, cv::Point(ans[i][0], ans[i][1]), cv::Point(ans[i][2], ans[i][3]), cv::Scalar(255, 255, 255));
+				cv::rectangle(frame, cv::Point(ans[i][0], ans[i][1]), cv::Point(ans[i][2], ans[i][3]), cv::Scalar(0, 255, 0), 3);
 				std::ostringstream text;
-				text << GetClassName(CLASS, ans[i].id) << "  :  " << ans[i].confidence;
-				cv::putText(frame, text.str(), cv::Point(ans[i][0], ans[i][1] - 18), 0, 0.6, cv::Scalar(0, 255, 0));
+				text << GetClassName(CLASS, ans[i].id) << ": " << ans[i].confidence;
+				cv::putText(frame, text.str(), cv::Point(ans[i][0], ans[i][1] +20), CV_FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 255, 0));
 			}
 		}
 

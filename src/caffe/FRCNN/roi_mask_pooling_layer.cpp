@@ -30,7 +30,7 @@ void ROIMaskPoolingLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom,
   half_part_ = roi_mask_pool_param.half_part();
   roi_scale_ = roi_mask_pool_param.roi_scale();
   mask_scale_ = roi_mask_pool_param.mask_scale();
-  LOG(INFO) << "Spatial scale: " << spatial_scale_;
+  DLOG(INFO) << "Spatial scale: " << spatial_scale_;
 }
 
 template <typename Dtype>

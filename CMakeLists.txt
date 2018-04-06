@@ -123,12 +123,12 @@ endif()
 # ---[ Subdirectories
 # add_subdirectory(src/gtest)
 add_subdirectory(src/caffe)
-add_subdirectory(tools)
-add_subdirectory(examples)
+# add_subdirectory(tools)
+# add_subdirectory(examples)
 add_subdirectory(python)
-# add_subdirectory(matlab)
-add_subdirectory(docs)
-add_subdirectory(src/api/FRCNN)
+# # add_subdirectory(matlab)
+# add_subdirectory(docs)
+# add_subdirectory(src/api/FRCNN)
 
 # ---[ Linter target
 add_custom_target(lint COMMAND ${CMAKE_COMMAND} -DPYTHON_EXECUTABLE=${PYTHON_EXECUTABLE} -P ${PROJECT_SOURCE_DIR}/cmake/lint.cmake)

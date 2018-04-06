@@ -112,3 +112,6 @@ MANIFEST-*
 *.opensdf
 *.pdb
 *.props
+
+build
+build_

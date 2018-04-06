@@ -15,28 +15,29 @@
 #include "api/FRCNN/frcnn_api.hpp"
 #include "api/FRCNN/rpn_api.hpp"
 
-namespace API{
+namespace API {
 
-using std::vector;
-using caffe::Blob;
-using caffe::Net;
-using caffe::Frcnn::FrcnnParam;
-using caffe::Frcnn::Point4f;
-using caffe::Frcnn::BBox;
-using caffe::Frcnn::DataPrepare;
-using FRCNN_API::Detector;
-using FRCNN_API::Rpn_Det;
+	using std::vector;
+	using caffe::Blob;
+	using caffe::Net;
+	using caffe::Frcnn::FrcnnParam;
+	using caffe::Frcnn::Point4f;
+	using caffe::Frcnn::BBox;
+	using caffe::Frcnn::DataPrepare;
+	using FRCNN_API::Detector;
+	using FRCNN_API::Rpn_Det;
 
-inline void Set_Config(std::string default_config) {
-	try	{
-		caffe::Frcnn::FrcnnParam::load_param(default_config);
-	}			
-	catch (std::exception& e)	{
-		caffWARNINGINGING..what.NING:Frcnn::FrcnnParam::set_default_param();
+	inline void Set_Config(std::string default_config) {
+		try {
+			caffe::Frcnn::FrcnnParam::load_param(default_config);
+		}
+		catch (std::exception& e) {
+			LOG(WARNING) << e.what();
+			caffe::Frcnn::FrcnnParam::set_default_param();
 		}
 
-  //caffe::Frcnn::FrcnnParam::load_param(default_config);
-  caffe::Frcnn::FrcnnParam::print_param();
-}
+		//caffe::Frcnn::FrcnnParam::load_param(default_config);
+		//caffe::Frcnn::FrcnnParam::print_param();
+	}
 
 }

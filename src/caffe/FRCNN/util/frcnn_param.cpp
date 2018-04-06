@@ -290,7 +290,7 @@ void FrcnnParam::set_default_param() {
 	std::vector<float> anchors(_anchors, _anchors + sizeof(_anchors) / sizeof(_anchors[0]));
 	FrcnnParam::anchors = anchors;
 	FrcnnParam::test_score_thresh = 0.05f;
-	FrcnnParam::n_classes = 21;
+	FrcnnParam::n_classes = 17;
 	FrcnnParam::iter_test = 2;
 }
 
